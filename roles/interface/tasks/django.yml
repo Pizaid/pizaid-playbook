@@ -1,0 +1,11 @@
+- name: Install Django
+  sudo: yes
+  pip: name=Django version=1.6.5
+
+- name: Install compass
+  sudo: yes
+  gem: name=compass
+
+- name: Install django-compas
+  sudo: yes
+  pip: name=django-compass2

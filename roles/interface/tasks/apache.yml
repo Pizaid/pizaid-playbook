@@ -1,0 +1,31 @@
+- name: Install apache2
+  sudo: yes
+  apt: name=apache2 state=latest
+
+- name: Install mod_wsgi module
+  sudo: yes
+  apt: name=libapache2-mod-wsgi
+
+- name: Move site_pizaid at sites-available
+  sudo: yes
+  template: src=site_pizaid dest=/etc/apache2/sites-available
+
+- stat: path=/etc/apache2/sites-enabled/site_pizaid
+  register: st
+- name: Create a symbolic link to site_pizaid at sites-enabled
+  sudo: yes
+  shell: ln -s /etc/apache2/sites-available/site_pizaid /etc/apache2/sites-enabled/site_pizaid
+  when: st.stat.exists == False
+
+- name: Disable default site
+  sudo: yes
+  command: /usr/sbin/a2dissite default
+
+- name: Enable pizaid site
+  sudo: yes
+  command: /usr/sbin/a2ensite site_pizaid
+
+- name: Reload apache2
+  sudo: yes
+  command: /etc/init.d/apache2 reload
+  notify: Restart apache2

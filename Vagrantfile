@@ -6,8 +6,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "debian-wheezy-7.0-vanilla"
-  config.vm.box_url = "https://dl.dropboxusercontent.com/s/xymcvez85i29lym/vagrant-debian-wheezy64.box"
+  config.vm.box = "debian-wheezy-7.6"
+  config.vm.box_url = "https://github.com/jose-lpa/packer-debian_7.6.0/releases/download/1.0/packer_virtualbox-iso_virtualbox.box"
 
   config.vm.define :pizaid do |pz|
     pz.vm.hostname = "pizaid-server"
@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     pz.vm.provision "ansible" do |ansible|
       ansible.playbook = "site.yml"
+      ansible.inventory_path = "hosts"
     end
   end
 end

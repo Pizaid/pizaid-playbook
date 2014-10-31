@@ -1,0 +1,15 @@
+user: "vagrant"
+
+vm:
+  home: "/home/{{ user }}"
+
+rbenv:
+  repo: "https://github.com/sstephenson"
+  ruby_version: 2.1.2
+
+pizaid:
+  interface_repo:  "https://github.com/Pizaid/pizaid-interface.git"
+  controller_repo: "https://github.com/Pizaid/pizaid-controller.git"
+  interface_path:  "{{ vm.home }}/pizaid/interface"
+  controller_path: "{{ vm.home }}/pizaid/controller"
+  interface_root:  "{{ vm.home }}/pizaid/interface/pizaid"

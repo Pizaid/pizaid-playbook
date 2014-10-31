@@ -1,0 +1,7 @@
+# git setting
+- name: Install git
+  sudo: yes
+  apt: name=git state=latest
+
+- name: Set .gitconfig at user home directory
+  template: src=gitconfig.j2 dest={{ vm.home }}/.gitconfig

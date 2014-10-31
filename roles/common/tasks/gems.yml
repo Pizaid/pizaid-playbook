@@ -1,0 +1,7 @@
+- name: Install gem
+  sudo: yes
+  apt: name={{ item }} state=latest
+  with_items:
+    - ruby-dev
+    - rubygems
+    - build-essential

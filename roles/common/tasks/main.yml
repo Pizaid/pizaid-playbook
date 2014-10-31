@@ -1,0 +1,8 @@
+# Upgrade apt
+- name: Update apt
+  sudo: yes
+  apt: upgrade=dist update_cache=yes
+
+- include: git.yml
+- include: gems.yml
+- include: rbenv.yml

@@ -1,0 +1,17 @@
+- name: Configure common modules
+  hosts: pizaid
+  user: "{{ user }}"
+  roles:
+    - common
+
+- name: Configure and deploy the Web server of pizaid
+  hosts: pizaid
+  user: "{{ user }}"
+  roles:
+    - interface
+
+- name: Configure and deploy controller for LCDPanel and Web server
+  hosts: pizaid
+  user: "{{ user }}"
+  roles:
+    - controller

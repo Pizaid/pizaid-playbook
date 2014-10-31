@@ -1,0 +1,2 @@
+- name: Clone pizaid-controller repository
+  git: repo={{ pizaid.controller_repo }} dest={{ pizaid.controller_path }} version=master

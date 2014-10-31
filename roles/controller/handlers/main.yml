@@ -1,0 +1,4 @@
+- name: Start controller server
+  command: bundle exec ruby example/simpleserver.rb
+  args:
+    chdir: "{{ pizaid.controller_path }}"

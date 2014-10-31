@@ -1,0 +1,2 @@
+- name: Clone pizaid-interface repository
+  git: repo={{ pizaid.interface_repo }} dest={{ pizaid.interface_path }} version=master

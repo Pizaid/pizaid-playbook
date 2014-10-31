@@ -1,0 +1,23 @@
+- name: Clone github repository of rbenv
+  git: repo={{ rbenv.repo }}/rbenv.git dest={{ vm.home }}/.rbenv
+
+- name: Clone github repository of ruby-build
+  git: repo={{ rbenv.repo }}/ruby-build.git dest={{ vm.home }}/.rbenv/plugins/ruby-build
+
+- shell: grep -ci '# rbenv configuration' {{ vm.home }}/.bashrc
+  ignore_errors: yes
+  register: count
+- name: Execute rbenv.sh to add initialization code for rbenv
+  script: rbenv.sh {{ vm.home }}
+  when: count.stdout == "0"
+
+- name: Install Ruby via rbenv
+  command: rbenv install {{ rbenv.ruby_version }}
+  args:
+    creates: "{{ vm.home }}/.rbenv/versions/{{ rbenv.ruby_version }}"
+
+- name: Execute 'rbenv global {{ rbenv.ruby_version }}'
+  command: rbenv global {{ rbenv.ruby_version }}
+
+- name: Execute 'rbenv rehash'
+  command: rbenv rehash

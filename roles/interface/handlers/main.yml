@@ -1,0 +1,15 @@
+- name: Disable default site
+  sudo: yes
+  command: /usr/sbin/a2dissite default
+
+- name: Enable pizaid site
+  sudo: yes
+  command: /usr/sbin/a2ensite site_pizaid
+
+- name: Reload apache2
+  sudo: yes
+  command: /etc/init.d/apache2 reload
+
+- name: Restart apache2
+  sudo: yes
+  command: /etc/init.d/apache2 restart

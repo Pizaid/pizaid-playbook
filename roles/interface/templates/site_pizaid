@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    ServerAdmin maximilianthermidor765@gmail.com
+
+    DocumentRoot {{ pizaid.interface_path }}/pizaid
+    WSGIScriptAlias / {{ pizaid.interface_path }}/pizaid/pizaid/wsgi.py
+    #WSGIPythonPath {{ pizaid.interface_path }}/pizaid
+
+    <Directory {{ pizaid.interface_path }}/pizaid/pizaid>
+        <Files wsgi.py>
+            Order allow,deny
+            Allow from all
+        </Files>
+    </Directory>
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+    ErrorLog ${APACHE_LOG_DIR}/pizaid.error.log
+    CustomLog ${APACHE_LOG_DIR}/pizaid.access.log combined
+</VirtualHost>
