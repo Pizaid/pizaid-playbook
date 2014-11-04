@@ -1,3 +1,7 @@
+- name: Install thrift
+  sudo: yes
+  pip: name=thrift
+
 - name: Install bundler via rbenv
   command: rbenv exec gem install bundler
 
@@ -10,8 +14,4 @@
   command: bundle exec rake install
   args:
     chdir: "{{ pizaid.controller_path }}"
-
-- name: Install thrift
-  sudo: yes
-  pip: name=thrift
   notify: Start controller server
