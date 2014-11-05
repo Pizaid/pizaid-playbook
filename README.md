@@ -5,6 +5,16 @@
 * vagrant
 * ansible
 
+## Before provision
+
+To enable accessing to github.com,
+you should add your secret ssh key to ssh-agent.
+
+```
+$ ssh-add [path_to_your_secret_key]
+$ ssh-add -l      # confirm that your key for github.com is added
+```
+
 ## setup your VM for development
 
 First, you should clone this repository.
