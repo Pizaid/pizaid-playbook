@@ -4,7 +4,7 @@
   roles:
     - common
 
-- name: Configure and deploy the Web server of pizaid
+- name: Configure and deploy the Web server of Pizaid
   hosts: pizaid
   user: "{{ user }}"
   roles:
