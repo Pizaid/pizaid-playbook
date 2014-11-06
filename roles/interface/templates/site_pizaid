@@ -5,6 +5,10 @@
     WSGIScriptAlias / {{ pizaid.interface_path }}/pizaid/pizaid/wsgi.py
     #WSGIPythonPath {{ pizaid.interface_path }}/pizaid
 
+    WSGIDaemonProcess {{ vm.hostname }} user={{ user }} group={{ user }}
+    WSGIProcessGroup {{ vm.hostname }}
+    WSGIScriptReloading On
+
     <Directory {{ pizaid.interface_path }}/pizaid/pizaid>
         <Files wsgi.py>
             Order allow,deny
