@@ -1,5 +1,7 @@
 - name: Clone github repository of rbenv
-  git: repo={{ rbenv.repo }}/rbenv.git dest={{ vm.home }}/.rbenv
+  git: repo={{ rbenv.repo }}/rbenv.git
+       dest={{ vm.home }}/.rbenv
+       accept_hostkey=yes
 
 - name: Clone github repository of ruby-build
   git: repo={{ rbenv.repo }}/ruby-build.git dest={{ vm.home }}/.rbenv/plugins/ruby-build

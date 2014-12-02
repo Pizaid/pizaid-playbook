@@ -23,7 +23,7 @@ First, you should clone this repository.
 $ git clone https://github.com/Pizaid/pizaid-playbook.git
 ```
 
-Second, run provision.
+Second, create VM and run provision.
 
 ```
 $ vagrant up pizaid
@@ -34,6 +34,8 @@ That's all.
 
 ## setup your Raspberry pi
 
+Confirm you can `ssh` to your Rasberry pi.
+
 First, change the user name in group_vars/pizaid.yml like this:
 
 ```
@@ -41,13 +43,19 @@ First, change the user name in group_vars/pizaid.yml like this:
 user: "pi"
 ```
 
-Second, change the IP address of your Raspberry pi in hosts file:
+Second, change the IP address of your Raspberry pi in hosts:
+
+```
+[pizaid]
+#192.168.33.20
+156.xx.yyy.zz
+```
 
 Then, run the playbook after you confirm the connection:
 
 ```
 $ ansible -i hosts pizaid -m ping
-192.168.33.20 | success >> {
+156.xx.yyy.zz | success >> {
   "changed": false,
   "ping": "pong"
 }

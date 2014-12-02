@@ -20,10 +20,7 @@
 - name: Disable default site
   sudo: yes
   command: /usr/sbin/a2dissite default
-
-- name: Enable pizaid site
-  sudo: yes
-  command: /usr/sbin/a2ensite site_pizaid
+  notify: Enable pizaid site
 
 - name: Reload apache2
   sudo: yes
