@@ -45,7 +45,7 @@ user: "pi"
 
 Second, change the IP address of your Raspberry pi in hosts:
 
-```
+```hosts
 [pizaid]
 #192.168.33.20
 156.xx.yyy.zz
